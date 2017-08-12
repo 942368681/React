@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			React:是MVC中的专注于View层的前端框架。
+
+			组件化开发：
+				实现低耦合、高内聚，注重的是团队、协作。
+
+			创建一个组件
+				状态
+				通信
+				事件
+
+			创建 React 对象的时候，名字首字母一定要大写。
+
+			jsx语法：
+				1.在jsx语法中class要写成className
+				2.顶层只能有一个标签
+				3.元素需要闭合
+
+			this.state
+				初始化状态，当这个状态中的值发生变化的时候就会更新DOM
+				等同于getInitialState(ES5写法)
+
+			更改状态：
+				this.setState({})
+
+			给元素身上绑定事件：
+				onClick={this.click}
+
+			定义事件:
+				跟render函数是平级关系，创建一个事件函数
+
+			输出:
+				{this.state.num}
+
+			render中的return里面不能有分号,不能有注释，只允许有模板。
+			render中的return上面可以注释和写逻辑。
+			逻辑什么的一般是写在render中的return上面或者函数中。
+
+			React核心：
+				this.state
+			   this.setState({})
+					当this.setState({})调用的时候，也就是state发生变化的时候，那么就会执行一次render(){//...}
+			   this.props
+					子组件通过this.props来进行接收从父组件传递给的数据
+					父组件的数据传递给子组件通过属性来传递
+						return <Li {...data}/>
+					单向数据流：
+				       父组件的数据流向子组件是单向的，父级的数据只能父级修改，
+						 子级不允许修改
+					子组件传递给父组件数据的方式其实是通过回调函数来让父组件处理数据。
+ 				   	1.把父组件数据处理函数传递给子组件
+ 				   	2.当子组件触发某个事件的时候，调用父组件的这个数据处理函数
+ 				     	需要传递数据的时候可以传递
+
+			React中的input元素：
+				受限与非受限
+				受限：
+					只要是表单元素加了默认值（自己手动添加或父组件传递的，value=""也算）
+					就为受限组件，默认值是根据状态来修改的，只要状态不改那么里面的值就不会变
+					只要是更改表单元素可以通用onChange事件
+					受限组件如何解决？
+			      	1.绑onChange事件
+			        	2.defaultValue/defaultChecked
+				         在表单元素身上加了defaultValue/defaultChecked之后，
+				         表单元素就不再是受限组件了
+							例如：
+								<input
+									type = "text"
+									//value = {this.state.val}
+								  	defaultValue="123456"
+									//onChange = {this.changeVal}
+								/>
+
+			子组件继承父组件数据：
+				子组件直接改变父组件的数据是会报错的，那么可以先将父组件的数据继承给子组件
+				当子组件要继承父组件的数据的时候，那么在子组件写一个初始化
+					constructor(props){
+						super(props);
+						this.state = {
+							value:this.props.val  //从父组件继承来的，变成自己的
+							...
+						};
+					}
+				注意：
+					constructor只会一开始进一次！
+					当父组件的数据发生变化的时候，会进render，但是不会再进constructor了！
+					constructor、super中要传props
+					还是可以通过回调，让父组件数据也修改，但是父组件的数据发生变化的时候，
+					子组件数据不会随之变化了
+
+			PropTypes
+				PropTypes是react提供的数据验证，专门用来验证props的数据类型是否为想要，
+				如果不是会在控制台输出错误信息，方便快速定位错误，为团队合作开发提供便捷
+				示例：
+					LiModel.propTypes = {
+						checked:PropTypes.bool,
+					  	txt:PropTypes.string
+					}
+
+			ref
+				方便我们在当前组件下快速获取某个组件或者元素，注意是当前组件！
+				如果没在当前组件上设置ref（跨组件），那么获取的值为undefined。
+				写:
+			   	<header ref = {(elem)=>{this.head = elem}}></header>
+				读：
+  			     	console.log(this.head)
+
+
+
+
+		*/
+	</script>
+</body>
+</html>
