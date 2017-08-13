@@ -48,6 +48,11 @@
 				this.state
 			   this.setState({})
 					当this.setState({})调用的时候，也就是state发生变化的时候，那么就会执行一次render(){//...}
+					setState() 可以接收一个函数，这个函数接受两个参数，第一个参数表示
+					上一个状态值(prevState)，第二参数表示当前的 props
+					this.setState((prevState, props) => ({
+						//do something here
+					}));
 			   this.props
 					子组件通过this.props来进行接收从父组件传递给的数据
 					父组件的数据传递给子组件通过属性来传递
