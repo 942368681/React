@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 
 class FooterModule extends Component{
-
+//全部
    click1 = () => {
       this.props.click1();
    };
-
+//未完成
    click2 = () => {
       let ul = document.getElementsByClassName('filters')[0];
       let as = ul.getElementsByTagName('a');
@@ -15,7 +15,7 @@ class FooterModule extends Component{
       this.a2.className = 'selected';
       this.props.click2();
    };
-
+//已完成
    click3 = () => {
       let ul = document.getElementsByClassName('filters')[0];
       let as = ul.getElementsByTagName('a');
@@ -25,7 +25,7 @@ class FooterModule extends Component{
       this.a3.className = 'selected';
       this.props.click3();
    };
-
+//清除完成项
    click4 = () => {
       this.props.click4();
    };

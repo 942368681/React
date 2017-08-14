@@ -8,15 +8,15 @@ class MainModule extends Component{
          db:false
       };
    }
-
+//删除项
    click = (ev) => {
        this.props.closeLi(this.props.id)
    };
-
+//单选
    change = () => {
       this.props.checkChange(this.props.id)
    };
-
+//双击输入修改内容
    dbClick = () => {
       this.setState({
          db:true
@@ -25,21 +25,23 @@ class MainModule extends Component{
          this.db.value = this.props.txt;
       });
    };
-
+//失焦
    blur = () => {
-      let {checked,id} = this.props;
-      let data = {
-         checked:checked,
-         id:id,
-         text:this.db.value,
-         disp:"block"
-      };
-      this.props.changeText(data);
-      this.setState({
-         db:false
-      });
+      if (this.db.value) {
+         let {checked,id} = this.props;
+         let data = {
+            checked:checked,
+            id:id,
+            text:this.db.value,
+            disp:"block"
+         };
+         this.props.changeText(data);
+         this.setState({
+            db:false
+         });
+      }
    };
-
+//回车、Esc
    keyup = (ev) => {
       let prevVal = this.props.txt;
       if (ev.keyCode === 13) {

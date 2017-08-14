@@ -16,6 +16,12 @@ class App extends Component{
          footer:"none"
       };
    };
+   //挂载之后执行
+   componentDidMount(){
+      this.setState({
+         arr:getItem('arr')
+      });
+   };
 //修改输入框内容
    valChange = (val) => {
       this.setState({
@@ -192,6 +198,10 @@ class App extends Component{
          click3:this.click3,
          click4:this.click4
       }
+      //初始的时候并没有数据，就不存了，以便走下面的默认
+      if (arr1.length) {
+         localStorage.setItem('arr',JSON.stringify(arr1));
+      }
 
       return(
          <div>
@@ -211,6 +221,10 @@ class App extends Component{
          </div>
       );
    };
+};
+//获取本地存储，没有的话返回一个初始数据
+function getItem(arr){
+   return JSON.parse(localStorage.getItem(arr)) || [{text:'多多对对对',id:0,checked:false,disp:"block"}];
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));

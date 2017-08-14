@@ -1,15 +1,15 @@
 import React,{Component} from 'react';
 
 class HeadModule extends Component{
-
+//解绑受限表单
    changeVal = (ev) => {
       this.props.valChange(ev.target.value)
    };
-
+//回车添加项
    keyup = (ev) =>{
       if (ev.keyCode === 13) {
          if (ev.target.value === '') {
-            alert('请输入内容')
+            alert('请输入内容');
          } else {
             let data = {
                text:ev.target.value,

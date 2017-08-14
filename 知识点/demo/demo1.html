@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/babel">
+      /*
+          JSX 的语法，它允许 HTML 与 JavaScript 的混写
+          遇到 HTML 标签（以 < 开头），就用 HTML 规则解析；遇到代码块（以 { 开头），就用 JavaScript 规则解析
+      */
+      var names = ['Alice','Emily','Kate'];
+      ReactDOM.render(
+         <div>
+            {
+               names.map(function (name){
+                  return <div>Hello,{name}!</div>
+               })
+            }
+         </div>,
+         document.getElementById('example')
+      );
+   </script>
+</body>
+</html>
