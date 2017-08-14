@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/babel">
+      /*
+          getDefaultProps 方法可以用来设置组件属性的默认值
+      */
+      var MyTitle = React.createClass({
+         getDefaultProps:function (){
+            return {
+               title:'Hello!'
+            };
+         },
+         render:function (){
+            return <h1>{this.props.title}</h1>;
+         }
+      });
+      ReactDOM.render(
+         <MyTitle />,
+         document.getElementById('example')
+      );
+   </script>
+</body>
+</html>
