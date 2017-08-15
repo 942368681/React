@@ -7,25 +7,61 @@
 <body>
    <script type="text/javascript">
       /*
+         生命周期
+            组件第一次加载到DOM中的时候，挂载
+            当这个DOM被移除的时候，卸载
+
+         ***********************************************************************
+            1.组件的生命周期分成三个状态：
+               Mounting：已插入真实 DOM
+               Updating：正在被重新渲染
+               Unmounting：已移出真实 DOM
+
+            2.React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，
+              did 函数在进入状态之后调用，三种状态共计五种处理函数
+               插入DOM之前调用
+                  componentWillMount()
+               插入DOM之后调用
+                  componentDidMount()
+               重新渲染之前调用
+                  componentWillUpdate(object nextProps, object nextState)
+               从新渲染之后调用
+                  componentDidUpdate(object prevProps, object prevState)
+               移除DOM之前调用
+                  componentWillUnmount()
+
+            3.React 还提供两种特殊状态的处理函数
+               已加载组件收到新的参数时调用
+                  componentWillReceiveProps(object nextProps)
+               组件判断是否重新渲染时调用
+                  shouldComponentUpdate(object nextProps, object nextState)
+         ***********************************************************************
+
          生命周期钩子
-            componentDidMount(){
-
-            }
-            componentWillUnmount(){
-
-            }
-            当组件输出到 DOM 后会执行 componentDidMount() 钩子，
-            这是一个建立定时器的好地方
+            //挂载之后（只会进一次）
                componentDidMount(){
-                  this.timerID = setInterval(() => {
-                     this.tick()
-                  },1000)
+
                }
-            当组件在 DOM 中移除的时候会执行 componentWillUnmount() 钩子
-            在 componentWillUnmount()生命周期钩子中卸载计时器
+            //卸载之前
                componentWillUnmount(){
-                  clearInterval(this.timerID)
+
                }
+            //挂载之前（只会进一次）
+               componentWillMount(){
+
+               };
+               当组件输出到 DOM 后会执行 componentDidMount() 钩子，
+               这是一个建立定时器的好地方
+                  componentDidMount(){
+                     this.timerID = setInterval(() => {
+                        this.tick()
+                     },1000)
+                  }
+               当组件在 DOM 中移除的时候会执行 componentWillUnmount() 钩子
+               在 componentWillUnmount()生命周期钩子中卸载计时器
+                  componentWillUnmount(){
+                     clearInterval(this.timerID)
+                  }
       */
    </script>
 </body>
