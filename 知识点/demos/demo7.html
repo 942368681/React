@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/babel">
+      /*
+          componentDidMount
+          组件的style属性的设置方式也值得注意，不能写成style="opacity:{this.state.opacity};"
+          而要写成
+          style={{opacity: this.state.opacity}}
+          因为 React 组件样式是一个对象，所以第一重大括号表示这是 JavaScript 语法，
+          第二重大括号表示样式对象。
+      */
+      var Hello = React.createClass({
+         getInitialState:function (){
+            return {
+               opacity:1.0
+            };
+         },
+         componentDidMount:function (){
+            this.timer = setInterval(function (){
+               var opa = this.state.opacity;
+               opa -= 0.05;
+               if (opa < 0.1) {
+                  opa = 1.0;
+               }
+               this.setState({
+                  opacity:opa
+               });
+            }.bind(this),100);
+         },
+         render:function (){
+            return (
+               <div style = {{opacity:this.state.opacity}}>
+                     Hello {this.props.name}
+               </div>
+            );
+         }
+      });
+      ReactDOM.render(
+         <Hello name = "world" />,
+         document.getElementById('example')
+      );
+   </script>
+</body>
+</html>

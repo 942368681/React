@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+   <script type="text/babel">
+      /*
+         路由器Router就是React的一个组件，Router组件本身只是一个容器，真正的路由要通过Route组件定义
+         Route可以监听到浏览器地址栏路由变化，一旦变化就会匹配特定的组件并插入DOM
+
+         嵌套路由：
+            <Router history={hashHistory}>
+               <Route path="/" component={App}>
+                  <Route path="/repos" component={Repos}/>
+                  <Route path="/about" component={About}/>
+               </Route>
+            </Router>
+            用户访问/repos时，会先加载App组件，然后在它的内部再加载Repos组件
+            <App>
+               <Repos/>
+            </App>
+            App组件要写成：
+            export default React.createClass({
+               render() {
+                  return(
+                     <div>
+                        {this.props.children}
+                     </div>
+                  )
+               }
+            })
+
+         exact:
+           加在Route中：
+             /ppa/xxx
+               没加：
+                 /ppa  有的
+                 /ppa/xxx  有的
+                  如果没有xxx那么还有ppa
+
+               加了:
+                 /ppa  有的
+                 /ppa/xxx  没有
+                  如果没有xxx,那么也不会去找ppa
+                  
+         strict:
+           /one/	/one	没有  (没写最后那个斜线是找不到组件的)
+           /one/	/one/	是
+           /one/	/one/two 是
+
+      */
+   </script>
+</body>
+</html>

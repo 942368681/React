@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/babel">
+      /*
+         Route组件的path属性指定路由的匹配规则。这个属性是可以省略的，这样的话，
+         不管路径是否匹配，总是会加载指定组件
+            <Route path="inbox" component={Inbox}>
+               <Route path="messages/:id" component={Message} />
+            </Route>
+         当用户访问/inbox/messages/:id时，会加载下面的组件
+            <Inbox>
+               <Message/>
+            </Inbox>
+
+         path属性也可以使用相对路径（不以/开头），匹配时就会相对于父组件的路径
+
+         路由匹配规则是从上到下执行，一旦发现匹配，就不再匹配下一个
+      */
+
+   </script>
+</body>
+</html>
