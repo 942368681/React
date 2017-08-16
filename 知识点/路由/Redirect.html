@@ -14,11 +14,10 @@
          <Redirect>组件用于路由的跳转，即用户访问一个路由，会自动跳转到另一个路由
 
          <Route path="inbox" component={Inbox}>
-           <Redirect from="messages/:id" to="/messages/:id" />
+            return <Redirect to="/messages/:id" />
          </Route>
          现在访问/inbox/messages/5，会自动跳转到/messages/5
       */
-
    </script>
 </body>
 </html>
