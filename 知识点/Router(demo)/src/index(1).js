@@ -104,7 +104,7 @@ ReactDOM.render(
          <button>
             <Link to = "/app3">App3</Link>
          </button>
-         <Route path = "/:id" component = {child} />
+         <Route path = "/:id" render = {child} />
          <Route path = "/app3/app3_1" component = {App3_1} />
       </div>
    </Router>)
