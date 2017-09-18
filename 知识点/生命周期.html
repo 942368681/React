@@ -25,7 +25,7 @@
                   componentDidMount()
                重新渲染之前调用
                   componentWillUpdate(object nextProps, object nextState)
-               从新渲染之后调用
+               重新渲染之后调用
                   componentDidUpdate(object prevProps, object prevState)
                移除DOM之前调用
                   componentWillUnmount()
@@ -62,6 +62,28 @@
                   componentWillUnmount(){
                      clearInterval(this.timerID)
                   }
+      */
+
+      /*
+         总结：
+            1.构造函数，在创建组件的时候调用一次
+               constructor(props, context)
+            2.在组件挂载之前调用一次
+               componentWillMount()
+            3.在组件挂载之后调用一次
+               componentDidMount()
+            4.在组件接收到一个新的prop时被调用。这个方法在初始化render时不会被调用。
+            props是父组件传递给子组件的。父组件发生render的时候子组件就会调用，不管props有没有更新，也不管父子组件之间有没有数据交换
+               componentWillReceiveProps(nextProps)
+            5.组件挂载之后，每次调用setState后都会调用shouldComponentUpdate判断是否需要重新渲染组件。默认返回true，需要重新render。在比较复杂的应用里，有一些数据的改变并不影响界面展示，可以在这里做判断，优化渲染效率
+               shouldComponentUpdate(nextProps, nextState)
+            6.在组件接收到新的props或者state但还没有render时被调用，也就是重新渲染之前调用。在初始化时不会被调用。
+               componentWillUpdate(nextProps, nextState)
+            7.除了首次render之后调用componentDidMount，其它render结束之后都是调用componentDidUpdate。也就是重新渲染之后调用
+               componentDidUpdate()
+            8.组件被卸载的时候调用。一般在componentDidMount里面注册的事件需要在这里删除。
+               componentWillUnmount()
+
       */
    </script>
 </body>
