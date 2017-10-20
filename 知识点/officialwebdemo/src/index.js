@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 /*class Clock extends Component{
    constructor(){
@@ -145,7 +146,7 @@ class Page extends React.Component {
    }
 }*/
 
-class Reservation extends Component{
+/*class Reservation extends Component{
    constructor (){
       super();
       this.state = {
@@ -186,7 +187,233 @@ class Reservation extends Component{
          </form>
       );
    };
+};*/
+
+/*function BoilingVerdict(props) {
+   if (props.celsius >= 100) {
+      return <p>The water would boil.</p>;
+   }
+   return <p>The water would not boil.</p>;
+}
+class Calculator extends Component {
+   constructor() {
+      super();
+      this.state = {
+         temperature: ''
+      };
+   };
+   handleChange = (ev) => {
+      this.setState({temperature: ev.target.value});
+   };
+   render() {
+      const temperature = this.state.temperature;
+      return (
+         <fieldset>
+            <legend>Enter temperature in Celsius:</legend>
+            <input value={temperature} onChange={this.handleChange}/>
+            <BoilingVerdict celsius={parseFloat(temperature)}/>
+         </fieldset>
+      );
+   };
+}*/
+
+/*function FancyBorder(props){
+   return (
+      <div>
+         {props.children}
+      </div>
+   );
 };
+class WelcomeDialog extends Component {
+   render() {
+      return (
+         <FancyBorder color="blue">
+            <h1 className="Dialog-title">
+               Welcome
+            </h1>
+            <p className="Dialog-message">
+               Thank you for visiting our spacecraft!
+            </p>
+         </FancyBorder>
+      );
+   };
+}*/
+
+/*function FancyBorder(props){
+   return (
+      <div>
+         {props.children}
+      </div>
+   );
+};
+function Dialog(props) {
+   return (
+      <FancyBorder>
+         <h1>
+            {props.title}
+         </h1>
+         <p>
+            {props.message}
+         </p>
+         {props.children}
+      </FancyBorder>
+   );
+};
+class SignUpDialog extends Component {
+   constructor() {
+      super();
+      this.state = {
+         login: ''
+      };
+   };
+   handleChange = (ev) => {
+      this.setState({
+         login:ev.target.value
+      });
+   };
+   handleSignUp = () => {
+      alert(`Welcome aboard, ${this.state.login}!`);
+   };
+   render() {
+      return (
+         <Dialog
+            title="Mars Exploration Program"
+            message="How should we refer to you?"
+         >
+            <input value={this.state.login} onChange={this.handleChange}/>
+            <button onClick={this.handleSignUp}>
+               Sign Me Up!
+            </button>
+         </Dialog>
+      );
+   };
+};*/
+
+/*function Repeat(props){
+   //这里props.children是下面Repeat标签包裹的函数
+   let items = [];
+   for (var i = 0; i < props.numTimes; i++) {
+      items.push(props.children(i));
+   }
+   return <div className = "box">{items}</div>;
+};
+function ListOfTenThings(){
+   return(
+      <Repeat numTimes = {10}>
+         {(index) => <div key = {index}>This is item {index} in the list</div>}
+      </Repeat>
+   );
+};*/
+
+/*class Greeting extends React.Component {
+   render(){
+      return(
+         <h1>Hello,{this.props.name}</h1>
+      );
+   };
+};
+// 出于性能的原因，propTypes 仅在开发模式中检测
+Greeting.propTypes = {
+   name:PropTypes.string
+};
+// 指定props默认值
+Greeting.defaultProps = {
+   name:'bbb'
+};*/
+
+/*class CustomTextInput extends Component {
+   constructor (){
+      super();
+      this.state = {};
+   };
+   blur = () => {
+      this.textInput.blur();
+   };
+   componentDidMount = () => {
+      this.textInput.focus();
+   };
+   render (){
+      return (
+         <div>
+            <input
+               type = "text"
+               ref = {(elem) => {this.textInput = elem}}
+            />
+            <input
+               type = "button"
+               value = "Blur the text input"
+               onClick = {this.blur}
+            />
+         </div>
+      );
+   };
+};*/
+
+/*class NameForm extends Component {
+   constructor (){
+      super();
+      this.state = {};
+   }
+   handleSubmit = () => {
+      alert('A name was submitted:'+this.input.value);
+   };
+   render (){
+      return (
+         <form onSubmit = {this.handleSubmit}>
+            <label>
+               Name:
+               <input
+                  type = "text"
+                  ref = {(ele) => {this.input = ele}}
+               />
+            </label>
+            <input
+               type = "submit"
+               value = "Submit"
+            />
+         </form>
+      );
+   };
+};*/
+
+/*
+   优化性能：
+      如果你的组件在部分场景下不需要更新，你可以在 shouldComponentUpdate 返回 false 来跳过整个渲染流程，包括调用render() 和之后流程。
+      shouldComponentUpdate(nextProps, nextState) {
+         return false;
+      }
+*/
+
+/*class CounterButton extends Component {
+   constructor() {
+      super();
+      this.state = {
+         count: 1
+      };
+   };
+   countAdd = () => {
+      let num = this.state.count;
+      this.setState({
+         count: num + 1
+      });
+   };
+   shouldComponentUpdate = (nextProps, nextState) => {
+      if (this.props.color !== nextProps.color) {
+         return true;
+      }
+      if (this.state.count !== nextState.count) {
+         return true;
+      }
+      return false;
+   };
+   render() {
+      return (
+         <button color={this.props.color} onClick={this.countAdd}>Count : {this.state.count}</button>
+      );
+   };
+};*/
+
+
 
 ReactDOM.render(
-   <Reservation />, document.getElementById('root'));
+   <CounterButton/>, document.getElementById('root'));
