@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+   <style>
+   .box{
+      width: 200px;
+      height: 180px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      position: relative;
+      overflow: hidden;
+   }
+   .pic{
+      width: 200px;
+      height: 180px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+   }
+   img{
+      border: 0;
+      width: 200px;
+      height: 180px;
+   }
+   #file{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 180px;
+      opacity: 0;
+      z-index: 2;
+   }
+   .add{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: normal;
+      left: 50%;
+      top: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      color: #999;
+   }
+   .box2{
+      width: 90px;
+      height: 44px;
+      position: relative;
+   }
+   #doc,.btn{
+      position: absolute;
+      width: 90px;
+      height: 44px;
+      left: 0;
+      top: 0;
+   }
+   #doc{
+      opacity: 0;
+      z-index: 1;
+   }
+   p{
+      width: 500px;
+      word-break: break-all;
+   }
+   </style>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/react-dom.js"></script>
+	<script type="text/javascript" src="js/browser.min.js"></script>
+   <script type="text/babel">
+      var UpLoad = React.createClass({
+         getInitialState:function (){
+            return {
+               imgSrc:"",
+               filePic:null,
+               docPath:"",
+               docName:"",
+               fileDoc:null
+            };
+         },
+         upLoad:function (ev){
+            var typeArr = ev.target.files[0].name.split('.');
+            var type = typeArr[typeArr.length-1];
+            if (type !== 'jpg' && type !== 'png' ) {
+               alert('请上传图片');
+               return;
+            }
+            this.readFilePic(ev.target.files[0]);
+         },
+         readFilePic:function (file){
+            var This = this;
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function (e){
+               var dataURL = reader.result;
+               This.setState({imgSrc:dataURL,filePic:file});
+            };
+         },
+         upLoadDoc:function (ev){
+            var typeArr = ev.target.files[0].name.split('.');
+            var type = typeArr[typeArr.length-1];
+            if (type !== 'zip') {
+               alert('请上传压缩文件');
+               return;
+            }
+            this.readFileDoc(ev.target.files[0]);
+         },
+         readFileDoc:function (file){
+            var This = this;
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function (e){
+               var dataURL = reader.result;
+               This.setState({docPath:dataURL,fileDoc:file,docName:file.name});
+               console.log(This.state);
+            };
+         },
+         render:function (){
+            var show = this.state.imgSrc === '' ? {display:'none'} : {display:'block'};
+            return(
+               <div>
+                  <span>上传图片</span>
+                  <div className = "box">
+                     <input
+                        type="file"
+                        id="file"
+                        onChange = {this.upLoad}
+                     />
+                     <div className="pic">
+                        <img src = {this.state.imgSrc} style = {show} />
+                     </div>
+                     <b className = "add">+</b>
+                  </div>
+                  <span>上传文件</span>
+                  <input
+                     type = "text"
+                     value = {this.state.docName}
+                     disabled
+                  />
+                  <div className = "box2">
+                     <input
+                        type="file"
+                        id = "doc"
+                        onChange = {this.upLoadDoc}
+                     />
+                     <button type = "button" className = "btn">上传</button>
+                  </div>
+               </div>
+            );
+         }
+      });
+      ReactDOM.render(
+         <UpLoad />
+         ,
+         document.getElementById('example')
+      );
+   </script>
+</body>
+</html>
