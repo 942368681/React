@@ -24,6 +24,10 @@
 
             类的方法默认是不会绑定 this 的。如果你忘记绑定 this.handleClick 并把它传入 onClick函数, 当你调用这个函数的时候 this 的值会是 undefined
 
+            需要传参的情况
+            <p
+               onClick = {this.openApp.bind(this,arg1,arg2,...)}
+            >点击</p>
       */
    </script>
 </body>
