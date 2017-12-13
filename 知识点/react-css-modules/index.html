@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+   <script type="text/javascript">
+      /*
+         CSS Modules
+            一个使用 webpack 之类的模块打包机加载 CSS 作用于特定文档的概念；
+            CSS module loader 将为每一个 CSS 类在加载 CSS 文档（确切的说，这个文档就是Interoperable CSS）的时候生成一个唯一的名字；
+
+         react-css-modules
+            引入
+               style-loader
+               css-loader
+               react-css-modules
+            写法
+               import React from 'react';
+               import CSSModules from 'react-css-modules';
+               import styles from './table.css';
+
+               class Table extends React.Component {
+                  render () {
+                     return (
+                        <div styleName='table'>
+                           <div styleName='row'>
+                              <div styleName='cell'>A0</div>
+                              <div styleName='cell'>B0</div>
+                           </div>
+                        </div>;
+                     )
+                  }
+               }
+
+               export default CSSModules(Table, styles);
+      */
+   </script>
+</body>
+</html>
