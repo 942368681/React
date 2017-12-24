@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import './style.css';
 
 /*class Clock extends Component{
    constructor(){
@@ -413,7 +414,154 @@ Greeting.defaultProps = {
    };
 };*/
 
+/*关于componentWillReceiveProps ()*/
+/*class Worker extends Component {
+   constructor (){
+      super();
+      this.state = {num:2}
+   };
+   componentWillReceiveProps (){
+      let num1 = this.state.num+1;
+      this.setState({num:num1});
+   };
+   render (){
+      return (
+         <div>
+            <span>{this.state.num}</span>
+         </div>
+      );
+   };
+};
+class Boss extends Component {
+   constructor (){
+      super();
+      this.state = {num:1};
+   };
+   numAdd = () => {
+      let num1 = this.state.num+1;
+      this.setState({
+         num:num1
+      });
+   };
+   render (){
+      return (
+         <div className = "box">
+            <Worker />
+            <button onClick = {this.numAdd}>click me!</button>
+            <p>自身计数：{this.state.num}</p>
+         </div>
+      );
+   };
+};*/
+/*class Pic extends Component {
+   constructor (){
+      super();
+      this.state = {style:''};
+   };
+   click = () => {
+      console.log(this.pic);
+      this.setState({
+         style:'aaa'
+      });
+   };
+   render (){
+      let arr = [];
+      arr = <img
+               src={require('./img/a.jpg')}
+               ref= {(elem) => {this.pic = elem}}
+               onLoad = {this.click}
+               className = {this.state.style}
+            />
+      return(
+         <div>
+            {arr}
+         </div>
+      );
+   };
+};*/
 
+class List extends Component {
+   constructor (){
+      super();
+      this.state = {
+
+      };
+   };
+   render (){
+       var arr = [
+           {
+               "domain":"原子",
+               "item":"aqaqwea"
+           },
+           {
+               "domain":"其他",
+               "item":"bewqadfbb"
+           },
+           {
+               "domain":"原子",
+               "item":"ccdasfc"
+           },
+           {
+               "domain":"个性",
+               "item":"asdfaffgff"
+           },
+           {
+               "domain":"原子",
+               "item":"dadsdd"
+           },
+           {
+               "domain":"其他",
+               "item":"eaedsafe"
+           },
+           {
+               "domain":"个性",
+               "item":"gsdfggf"
+           },
+           {
+               "domain":"个性",
+               "item":"hhasdgbdfh"
+           }
+       ];
+       var obj = {};
+       arr.forEach((e,i) => {
+           if (!obj[e.domain]) {
+               obj[e.domain] = [];
+           }
+           obj[e.domain].push(e.item);
+       });
+       let arr2 = [];
+       for (var k in obj) {
+           arr2.push(
+               {
+                   "type":k,
+                   "items":obj[k]
+               }
+           )
+       }
+       console.log(arr2);
+       let arr3 = arr2.map((e,i) => {
+           let arr4 = e.items.map((elem,index) => {
+               console.log(elem);
+               return(
+                   <li key = {index}>{elem}</li>
+               );
+           });
+           return(
+               <div key = {i}>
+                   <h2>{e.type}</h2>
+                   <ul>
+                       {arr4}
+                   </ul>
+               </div>
+           );
+       });
+      return(
+         <div>
+            {arr3}
+         </div>
+      );
+   };
+};
 
 ReactDOM.render(
-   <CounterButton/>, document.getElementById('root'));
+   <List />, document.getElementById('root'));
